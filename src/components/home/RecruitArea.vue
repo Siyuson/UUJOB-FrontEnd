@@ -30,7 +30,8 @@
   </template>
   
 <script>
-import { ref } from 'vue'
+import { ref } from 'vue';
+import axios from "axios";
 
 export default{
   data(){
@@ -61,14 +62,11 @@ export default{
       console.log(val)
     },
 
-    getRecruitList(){
+    async getRecruitList(){
       let that = this ;
       axios({
         method: "get",
-        url: "",
-        params: {
-          
-        },
+        url: "localhost:9090/recruitTable/allTable",
       }).then(function (response) {
         that.recruitObjs=[];
         response.data.forEach(element => {
@@ -77,7 +75,7 @@ export default{
               title:element.title,
               position:element.position,
               salary:element.salary,
-              description:"空",
+              description:element.description,
             }
           )
         });

@@ -7,7 +7,7 @@
         border
         >
             <template #extra>
-                <el-button type="primary">Operation</el-button>
+                <el-button type="primary" @click="init">Operation</el-button>
             </template>
             <el-descriptions-item>
                 <template #label>
@@ -18,7 +18,18 @@
                     Username
                 </div>
                 </template>
-                kooriookami
+                {{Profile.name}}
+            </el-descriptions-item>
+            <el-descriptions-item>
+                <template #label>
+                <div class="cell-item">
+                    <el-icon>
+                    <user />
+                    </el-icon>
+                    Sex
+                </div>
+                </template>
+                {{Profile.sex}}
             </el-descriptions-item>
             <el-descriptions-item>
                 <template #label>
@@ -29,7 +40,7 @@
                     Telephone
                 </div>
                 </template>
-                18100000000
+                {{Profile.phone}}
             </el-descriptions-item>
             <el-descriptions-item>
                 <template #label>
@@ -37,10 +48,10 @@
                     <el-icon>
                     <location />
                     </el-icon>
-                    Place
+                    Email
                 </div>
                 </template>
-                Suzhou
+                {{Profile.email}}
             </el-descriptions-item>
             <el-descriptions-item>
                 <template #label>
@@ -48,10 +59,10 @@
                     <el-icon>
                     <tickets />
                     </el-icon>
-                    学历
+                    EDU
                 </div>
                 </template>
-                本科
+                {{Profile.edu}}
             </el-descriptions-item>
             <el-descriptions-item>
                 <template #label>
@@ -59,10 +70,21 @@
                     <el-icon>
                     <office-building />
                     </el-icon>
-                    Address
+                    Company
                 </div>
                 </template>
-                No.1188, Wuzhong Avenue, Wuzhong District, Suzhou, Jiangsu Province
+                {{Profile.company}}
+            </el-descriptions-item>
+            <el-descriptions-item>
+                <template #label>
+                <div class="cell-item">
+                    <el-icon>
+                    <office-building />
+                    </el-icon>
+                    Position
+                </div>
+                </template>
+                {{Profile.position}}
             </el-descriptions-item>
             
             </el-descriptions>
@@ -78,7 +100,7 @@
                            详细描述
                         </div>
                         </template>
-                        空
+                        {{Profile.description}}
                 </el-descriptions-item>
             </el-descriptions>
         </el-card>
@@ -96,21 +118,71 @@
     Tickets,
     User,
   } from '@element-plus/icons-vue';
+  import {useStore} from "vuex";
   
   export default{
     data(){
         return {
             Profile:{
-                
+                name:"张三",
+                sex:"男",
+                phone:"11451478910",
+                email:"11@qq.com",
+                edu:"学历",
+                company:"公司",
+                position:"职位",
+                description:"描述",
             }
 
         }
     },
     methods: {
-        
+        async getProfile(){
+            let that=this;
+
+            //首先从user表里面获取部分信息
+            axios({
+                method: "get",
+                url: "http://",
+                data: {
+                    //参数自己接
+                    id: that.useStore().state.userId
+                },
+            }).then(function (response) {
+                if(response.data.code==="200"){
+
+                }
+                else{
+                    alert(response.data.msg);
+                }
+            });
+
+            //然后从profile表里面获取部分信息
+            axios({
+                method: "get",
+                url: "http://",
+                data: {
+                    //参数自己接
+                    id: that.useStore().state.userId
+                },
+            }).then(function (response) {
+                if(response.data.code==="200"){
+                    
+                }
+                else{
+                    alert(response.data.msg);
+                }
+            });
+
+        },
+        async init(){
+            alert("init");
+        }
+
     },
     mounted() {
-        
+        this.getProfile();
+        this.init();
     },
   }
   

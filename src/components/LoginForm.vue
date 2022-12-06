@@ -76,13 +76,13 @@ export default {
             },
           }).then(function (response) {
             // 登录成功
-            if (response.data.code === 0) {
+            if (response.data.code === "200") {
               // alert("登录成功");
               console.log(response.data.data);
               /*修改全局用户变量*/
               var userId = response.data.data.id;
               store.commit("set", userId);
-              router.push("/");
+              router.push("../home");
             } // 登录失败输出错误信息
             else {
               alert(response.data.msg);
