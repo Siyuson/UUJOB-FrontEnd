@@ -17,6 +17,12 @@ const routes = [
       path: '/manageposted',
       meta: {keepAlive: true},
       component: () => import('@/view/ManagePosted.vue')
+  },
+        {
+      name: 'Position',
+      path: '/Position',
+      meta: {keepAlive: true},
+      component: () => import('@/view/PositionView.vue')
     },
     {
         name: 'Myspace',
@@ -29,34 +35,34 @@ const routes = [
         //   name: 'userInfo',
         //   component: () => import('@/components/myspace/UserInfo.vue')
         // },
-      
+
         // {
         //     path: '/myspace/historyPostList',
         //     name: 'history',
         //     component: () => import('@//components/myspace/HistoryPostList.vue')
         //   },
-      
+
           {
             path: '/myspace/myProfile',
             name: 'myProfile',
             component: () => import('@/components/myspace/MyProfile.vue')
           },
-      
+
           // {
           //   path: '/myspace/sysNotice',
           //   name: 'sysNotice',
           //   component: () => import('@/components/myspace/SysNotice.vue')
           // },
-        
+
         ]
-        
+
     },
     // {
     //     name: 'FaultPage',
     //     path: '/:catchAll(.*)',
     //     component: () => import('@/view/404.vue')
     // },
-    
+
 ];
 
 export default routes
