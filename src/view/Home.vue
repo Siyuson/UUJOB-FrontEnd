@@ -7,7 +7,7 @@
                   </div>
 
                   <div class="function">
-                    <FunctionArea></FunctionArea>
+                      <FunctionArea></FunctionArea>
                   </div>
 
                   
@@ -16,7 +16,7 @@
     </div>
 </template>
 
-<script lang="ts">
+<script>
 import  RecruitArea   from "@/components/home/RecruitArea.vue";
 import FunctionArea from "@/components/home/FunctionArea.vue";
 
