@@ -19,17 +19,8 @@ const routes = [
         meta: {keepAlive: true},
         component: () => import('@/view/Myspace.vue'),
         children:[
-        {
-          path: '/myspace/userInfo',
-          name: 'userInfo',
-          component: () => import('@/components/myspace/UserInfo.vue')
-        },
+    
        
-        {
-            path: '/myspace/historyPostList',
-            name: 'history',
-            component: () => import('@//components/myspace/HistoryPostList.vue')
-          },
        
           {
             path: '/myspace/myProfile',
@@ -37,11 +28,6 @@ const routes = [
             component: () => import('@/components/myspace/MyProfile.vue')
           },
        
-          {
-            path: '/myspace/sysNotice',
-            name: 'sysNotice',
-            component: () => import('@/components/myspace/SysNotice.vue')
-          },
          
         ]
         

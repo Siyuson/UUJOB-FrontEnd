@@ -2,25 +2,14 @@
     <el-card class="box-card2">
       <template #header>
         <div class="card-header">
-          <span style="font-size: large;">功能面板</span>
+          <span>Card name</span>
+          <el-button class="button" text>Operation button</el-button>
         </div>
       </template>
-      <el-button @click="" type="info" plain>发布岗位</el-button>
+      <div v-for="o in 4" :key="o" class="text item">{{ 'List item ' + o }}</div>
     </el-card>
   </template>
   
-<script>
-
-export default{
-  data(){
-
-  },
-  methods: {
-    
-  },
-}
-
-</script>
   <style>
   .card-header {
     display: flex;

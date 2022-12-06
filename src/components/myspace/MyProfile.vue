@@ -87,7 +87,7 @@
    
   </template>
   
-  <script>
+  <script setup lang="ts">
   import { computed, ref } from 'vue'
   import {
     Iphone,
@@ -95,24 +95,8 @@
     OfficeBuilding,
     Tickets,
     User,
-  } from '@element-plus/icons-vue';
+  } from '@element-plus/icons-vue'
   
-  export default{
-    data(){
-        return {
-            Profile:{
-                
-            }
-
-        }
-    },
-    methods: {
-        
-    },
-    mounted() {
-        
-    },
-  }
   
   </script>
   

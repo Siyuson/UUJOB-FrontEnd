@@ -1,95 +1,69 @@
 <template>
-    
-    <div class="box-card-up">
-      <span style="font-size:large;">招聘栏信息</span>
-      <div style="float:right"><el-button type="primary" plain>全部</el-button></div>  
-    </div>
+    <el-card class="box-card">
+      <template #header>
+        <div class="card-header">
+          <span>招聘信息栏</span>
+          <el-button class="button" text>Operation button</el-button>
+        </div>
+      </template>
       <div class="demo-collapse">
-          <div v-for="recruitObj in recruitObjs">
-            <el-card class="box-card">    
-              <template #header>
-                <div class="card-header">
-                  <span style="font-size:larger">{{recruitObj.title}}</span>
-                  <el-button class="button" type="success">Apply</el-button>
-                </div>
-              </template>
-              <div class="salary">
-                {{recruitObj.salary}}
-              </div>          
-              <div class="position">
-                {{recruitObj.position}}
-              </div>
-              
-              <div class="description">
-                {{recruitObj.description}}
-              </div>
-                  
-          </el-card> 
-          </div>
+        <el-collapse v-model="activeNames" @change="handleChange">
+          <el-collapse-item title="Consistency" name="1">
+            <div>
+              Consistent with real life: in line with the process and logic of real
+              life, and comply with languages and habits that the users are used to;
+            </div>
+            <div>
+              Consistent within interface: all elements should be consistent, such
+              as: design style, icons and texts, position of elements, etc.
+            </div>
+          </el-collapse-item>
+          <el-collapse-item title="Feedback" name="2">
+            <div>
+              Operation feedback: enable the users to clearly perceive their
+              operations by style updates and interactive effects;
+            </div>
+            <div>
+              Visual feedback: reflect current state by updating or rearranging
+              elements of the page.
+            </div>
+          </el-collapse-item>
+          <el-collapse-item title="Efficiency" name="3">
+            <div>
+              Simplify the process: keep operating process simple and intuitive;
+            </div>
+            <div>
+              Definite and clear: enunciate your intentions clearly so that the
+              users can quickly understand and make decisions;
+            </div>
+            <div>
+              Easy to identify: the interface should be straightforward, which helps
+              the users to identify and frees them from memorizing and recalling.
+            </div>
+          </el-collapse-item>
+          <el-collapse-item title="Controllability" name="4">
+            <div>
+              Decision making: giving advices about operations is acceptable, but do
+              not make decisions for the users;
+            </div>
+            <div>
+              Controlled consequences: users should be granted the freedom to
+              operate, including canceling, aborting or terminating current
+              operation.
+            </div>
+          </el-collapse-item>
+        </el-collapse>
       </div>
+    </el-card>
   </template>
   
-<script>
+<script lang="ts" setup>
 import { ref } from 'vue'
 
-export default{
-  data(){
-   
-    return {
-      recruitObjs :[
-        {
-          index:"1",
-          title:"蔚蓝求职",
-          position:"算法工程师",
-          salary:"1.5w-2w",
-          description:"快来家人们",
-        },
-        {
-          index:"2",
-          title:"性感腾讯在线招人",
-          position:"游戏架构师",
-          salary:"5w-8w",
-          description:"爱来来不来滚",
-        },
-
-      ]
-    }
-  },
-  methods:{
-
-    handleChange(val){
-      console.log(val)
-    },
-
-    getRecruitList(){
-      let that = this ;
-      axios({
-        method: "get",
-        url: "",
-        params: {
-          
-        },
-      }).then(function (response) {
-        that.recruitObjs=[];
-        response.data.forEach(element => {
-          that.recruitObjs.push(
-            {
-              title:element.title,
-              position:element.position,
-              salary:element.salary,
-              description:"空",
-            }
-          )
-        });
-      })
-
-    },
-  },
-  mounted(){
-    this.getRecruitList();
-  },
+const activeNames = ref(['1'])
+const handleChange = (val: string[]) => {
+  console.log(val)
 }
-
 </script>\
 
   <style>
@@ -109,29 +83,6 @@ export default{
   
   .box-card {
     width: 800px;
-    margin-bottom: 10px;
-  }
-  .box-card-up {
-    width: 100%;
-    height: 100%;
-    margin-top: 10px;
-    margin-bottom: 20px;
-  }
-
-  .position{
-    font-size: large;
-    margin-bottom: 10px;
-  }
-
-  .salary{
-    font-size: medium;
-    float: right;
-    color: rgb(107, 171, 240);
-  }
-
-  .description{
-    font-size: small;
-    color: rgb(137, 137, 137);
   }
   </style>
   
