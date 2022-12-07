@@ -93,18 +93,20 @@ export default{
         },
         async submit(){
             let that=this;
-            //首先从user表里面获取部分信息
-            alert(this.dialogVisible);
+            alert(that.Form.userId);
             axios({
                 method: "post",
-                url: "http://localhost:9090/",
+                url: "http://localhost:9090/recruitTable/post",
                 data: {
-                    //参数自己接
-                    
+                    publisher_id:that.Form.userId,
+                    title:that.Form.title,
+                    position:that.Form.position,
+                    description:that.Form.description,
+                    salary:that.Form.salary,
                 },
             }).then(function (response) {
+                alert(response.data.msg);
                 if(response.data.code==="200"){
-
                     alert("操作成功");
                 }
                 else{
