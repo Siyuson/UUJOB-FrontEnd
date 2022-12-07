@@ -152,7 +152,6 @@
                 //     id: that.useStore().state.userId,
                 // },
             }).then(function (response) {
-                alert(response);
                 if(response.data.code === "200"){
                     that.Profile = [];
                     that.Profile.name = response.data.data.name;
