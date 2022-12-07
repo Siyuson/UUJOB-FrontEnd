@@ -17,7 +17,7 @@ const routes = [
       path: '/manageposted',
       meta: {keepAlive: true},
       component: () => import('@/view/ManagePosted.vue')
-  },
+    },
         {
       name: 'Position',
       path: '/Position',
@@ -47,7 +47,6 @@ const routes = [
             name: 'myProfile',
             component: () => import('@/components/myspace/MyProfile.vue')
           },
-
           // {
           //   path: '/myspace/sysNotice',
           //   name: 'sysNotice',

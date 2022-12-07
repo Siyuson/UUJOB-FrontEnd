@@ -174,6 +174,7 @@
                 }
             }).then(function (response) {
                 if(response.data.code==="200"){
+                    
                     that.Profile.sex = response.data.data.sex;
                     that.Profile.edu = response.data.data.edu;
                     that.Profile.email = response.data.data.email;

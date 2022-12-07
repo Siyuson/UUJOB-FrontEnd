@@ -5,15 +5,26 @@
           <span style="font-size: large;">功能面板</span>
         </div>
       </template>
-      <el-button @click="" type="info" plain>发布岗位</el-button>
+      <el-button @click="dialogFormVisible = true" type="info" plain>发布岗位</el-button>
     </el-card>
+
+    <el-dialog v-model="dialogFormVisible" title="请填写表单信息">
+      <ManagePosted></ManagePosted>
+    </el-dialog>
   </template>
   
 <script>
-
+import {reactive, ref} from 'vue';
+import ManagePosted from "@/view/ManagePosted.vue";
 export default{
+  components:{
+    ManagePosted,
+  },
   data(){
-
+    const dialogFormVisible  =ref(false);
+    return {
+      dialogFormVisible,
+    }
   },
   methods: {
     
