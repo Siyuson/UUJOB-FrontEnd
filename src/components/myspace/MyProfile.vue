@@ -143,7 +143,7 @@
             //首先从user表里面获取部分信息
             axios({
                 method: "get",
-                url: "http://",
+                url: "http://localhost:9090/user/info",
                 data: {
                     //参数自己接
                     id: that.useStore().state.userId
