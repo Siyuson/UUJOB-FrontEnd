@@ -66,10 +66,11 @@ export default{
       let that = this ;
       axios({
         method: "get",
-        url: "localhost:9090/recruitTable/allTable",
+        url: "http://localhost:9090/recruitTable/allTable",
       }).then(function (response) {
+        if(response.data.code == "200"){
         that.recruitObjs=[];
-        response.data.forEach(element => {
+        response.data.data.forEach(element => {
           that.recruitObjs.push(
             {
               title:element.title,
@@ -79,6 +80,9 @@ export default{
             }
           )
         });
+      }else{
+        alert("error");
+      }
       })
 
     },

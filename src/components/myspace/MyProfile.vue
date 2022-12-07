@@ -119,6 +119,7 @@
     User,
   } from '@element-plus/icons-vue';
   import {useStore} from "vuex";
+  import axios from "axios";
   
   export default{
     data(){
@@ -138,19 +139,26 @@
     },
     methods: {
         async getProfile(){
-            let that=this;
-
+            let that=this; 
             //首先从user表里面获取部分信息
             axios({
                 method: "get",
-                url: "http://",
-                data: {
-                    //参数自己接
-                    id: that.useStore().state.userId
-                },
+                url: "http://localhost:9090/user/info",
+                params: {
+                    id: useStore().state.userId
+                }
+                // data: {
+                //     //参数自己接
+                //     id: that.useStore().state.userId,
+                // },
             }).then(function (response) {
-                if(response.data.code==="200"){
-
+                alert(response);
+                if(response.data.code === "200"){
+                    that.Profile = [];
+                    that.Profile.name = response.data.data.name;
+                    that.Profile.phone = response.data.data.phone;
+                    that.Profile.company = response.data.data.company;
+                    that.Profile.position = response.data.data.position;
                 }
                 else{
                     alert(response.data.msg);
@@ -160,14 +168,16 @@
             //然后从profile表里面获取部分信息
             axios({
                 method: "get",
-                url: "http://",
-                data: {
-                    //参数自己接
-                    id: that.useStore().state.userId
-                },
+                url: "http://localhost:9090/profile",
+                params: {
+                    id: useStore().state.userId
+                }
             }).then(function (response) {
                 if(response.data.code==="200"){
-                    
+                    that.Profile.sex = response.data.data.sex;
+                    that.Profile.edu = response.data.data.edu;
+                    that.Profile.email = response.data.data.email;
+                    that.Profile.description = response.data.data.description;
                 }
                 else{
                     alert(response.data.msg);
@@ -175,14 +185,10 @@
             });
 
         },
-        async init(){
-            alert("init");
-        }
 
     },
     mounted() {
         this.getProfile();
-        this.init();
     },
   }
   
