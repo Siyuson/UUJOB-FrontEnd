@@ -1,127 +1,82 @@
 <template>
-    <div>  
-        <el-form :model="Form" label-width="80px">
-            <el-form-item label="发布用户">
-              <span>{{Form.userId}}</span>
-            </el-form-item>
-
-            <el-col :span="11">
-                <el-form-item label="标题">
-                    <el-input v-model="Form.title" />
-                </el-form-item>
-            </el-col>
-
-            <el-col :span="5">
-                <el-form-item label="招聘岗位">
-                    <el-input v-model="Form.position" />
-                </el-form-item>
-            </el-col>
-
-            <el-col :span="8">
-                <el-form-item label="招聘工资">
-                    <el-input v-model="Form.salary" />
-                </el-form-item>
-            </el-col>
-            
-            <el-form-item label="详细描述">
-                <el-input v-model="Form.description" type="textarea" />
-            </el-form-item>
-
-            <el-form-item >
-                <el-button type="primary" :icon="Check" @click="submit()" >确认投递</el-button>
-                <el-button type="danger" :icon="Delete"  @click="dialogVisible = true" >
-                    取消投递
-                </el-button>
-              </el-form-item>
-        </el-form>
-
+    <div>
+        <div class="header">
+            <el-row>
+            <el-icon size="30px"> <Compass style="margin-right: 5px;" /> </el-icon>
+            <div>我已投递的</div>
+            </el-row>
+        </div>
         
+        <el-descriptions
+        title="Vertical list with border"
+        direction="vertical"
+        :column="4"
+        :size="size"
+        border>
+    <template #extra>
+        <el-button type="danger" :icon="Delete"  @click="dialogVisible = true" >
+            Withdraw!
+        </el-button>
         <el-dialog
-            v-model="dialogVisible"
-            title="Tips"
-            width="30%"
-            :before-close = true>
-            <span>
-                是否确定取消投递？
-            </span>
-            <template #footer>
-            <span class="dialog-footer">
-                <el-button type="primary" @click="dialogVisible = false">不，点错了!</el-button>
-                <el-button type="warning" @click="dialogVisible = false; handlecancel()">是，就要撤！</el-button>
-            </span>
-            </template>
-        </el-dialog>
-        
+    v-model="dialogVisible"
+    title="Tips"
+    width="30%"
+    :before-close = true>
+    <span>
+        是否确定取消投递？
+    </span>
+    <template #footer>
+    <span class="dialog-footer">
+        <el-button type="primary" @click="dialogVisible = false">不，点错了!</el-button>
+        <el-button type="warning" @click="dialogVisible = false; handlecancel()">是，就要撤！</el-button>
+    </span>
+    </template>
+</el-dialog>
+    </template>
+    
+    <el-descriptions-item label="Username">test</el-descriptions-item>
+    <el-descriptions-item label="Telephone">test</el-descriptions-item>
+    <el-descriptions-item label="Place" :span="2">test</el-descriptions-item>
+    <el-descriptions-item label="Remarks">test</el-descriptions-item>
+    <el-descriptions-item label="Address">
+        test
+    </el-descriptions-item>
+</el-descriptions>
     </div>
 </template>
 
-<script lang="ts">
-import { computed, ref ,reactive} from 'vue'
+<script setup lang="ts">
+import { computed, ref } from 'vue'
 import { ElMessageBox } from 'element-plus'
 import { ElNotification } from 'element-plus'
-import { Delete,Check} from '@element-plus/icons-vue'
-import {useStore} from "vuex"
-import axios from 'axios'
+import { Delete} from '@element-plus/icons-vue'
+import {
+    Iphone,
+    Location,
+    OfficeBuilding,
+    Tickets,
+    User,
+} from '@element-plus/icons-vue'
+const dialogVisible = ref(false)
+const size = ref('')
 
-
-export default{
-    data(){
-        const dialogVisible = ref(false);
-        const size = ref('');
-        const Form = reactive({
-            userId: useStore().state.userId,
-            title:"标题",
-            position:"",
-            salary:"",
-            description:"",
-        });
-
-        return {
-            Delete,Check,
-            dialogVisible,
-            size,
-            Form,
-        }
-    },
-    methods:{
-        handlecancel (){
-            ElNotification({
-                title: '已取消',
-                message: '已取消！',
-                type: 'success',
-            })
-        },
-        async submit(){
-            let that=this;
-            //首先从user表里面获取部分信息
-            axios({
-                method: "post",
-                url: "http://localhost:9090/",
-                data: {
-                    //参数自己接
-                    id: that.Form.userId,
-                },
-            }).then(function (response) {
-                if(response.data.code==="200"){
-
-                    alert("操作成功");
-                }
-                else{
-                    alert(response.data.msg);
-                }
-            });
-
-        },
-
-    },
-    mounted() {
-
-    },
+const handlecancel = () => {
+    ElNotification({
+    title: '操作成功',
+    message: '操作成功！',
+    type: 'success',
+})
 }
-
 </script>
 
 <style scoped>
+.header{
+    margin-top: 30px;
+    font-family: "微软雅黑";
+    font-size: large;
+    color: #409EFF;
+    vertical-align: middle;
+}
 .el-descriptions {
     margin-top: 20px;
 }

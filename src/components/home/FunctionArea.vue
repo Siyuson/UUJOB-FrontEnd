@@ -9,16 +9,16 @@
     </el-card>
 
     <el-dialog v-model="dialogFormVisible" title="请填写表单信息">
-      <ManagePosted></ManagePosted>
+      <RecruitPost></RecruitPost>
     </el-dialog>
   </template>
   
 <script>
 import {reactive, ref} from 'vue';
-import ManagePosted from "@/view/ManagePosted.vue";
+import RecruitPost from "@/components/home/RecruitPost.vue";
 export default{
   components:{
-    ManagePosted,
+    RecruitPost,
   },
   data(){
     const dialogFormVisible  =ref(false);
