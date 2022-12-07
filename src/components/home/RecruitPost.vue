@@ -93,7 +93,6 @@ export default{
         },
         async submit(){
             let that=this;
-            alert(that.Form.userId);
             axios({
                 method: "post",
                 url: "http://localhost:9090/recruitTable/post",

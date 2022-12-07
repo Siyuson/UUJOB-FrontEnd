@@ -31,7 +31,7 @@
       </div>
 
       <el-dialog v-model="dialogApplyVisible" title="请填写简历信息">
-        <Apply :profileId="select_id"></Apply>
+        <Apply :tableId="select_id"></Apply>
       </el-dialog>
       
   </template>

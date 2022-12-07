@@ -64,7 +64,7 @@ import axios from "axios";
 export default{
     props:{
         //从父组件获取的参数
-        profileId:{
+        tableId:{
             type:Object,
             required:true,
         },
@@ -86,23 +86,26 @@ export default{
     methods:{
         async submit(){
             let that = this;
-            alert(that.profileId);
             //post表单进个人简历,但是哄，简历那边还只是一个对象，需要进行修改，现就这样
             axios({
                 method: "post",
-                url: "http://localhost:9090/",
+                url: "http://localhost:9090/profile",
                 params:{
-                    //解析称url的地方
-                    
+                    recruitTable_id: that.tableId,
                 },
                 data:{
-                    //放在body的地方
+                    seeker_id:that.Form.userId,
+                    age:that.Form.age,
+                    sex:that.Form.sex,
+                    email:that.Form.email,
+                    edu:that.Form.edu,
+                    description:that.Form.description,
 
                 },
             }).then(function (response) {
+                alert(response.data.msg);
                 if(response.data.code == "200"){
-                   
-
+                   alert("提交成功");
                 }else{
                     alert("error");
                 }
