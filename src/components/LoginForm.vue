@@ -82,6 +82,7 @@ export default {
               /*修改全局用户变量*/
               var userId = response.data.data.id;
               store.commit("set", userId);
+              // window.localStorage.setItem("token",userId);
               router.push("../home");
             } // 登录失败输出错误信息
             else {

@@ -11,11 +11,11 @@
                     <el-input v-model="form.age" />
                 </el-col>
                 
-                <el-col :span="2">
+                <el-col :span="3">
                     <span style="margin-left: 20px;">性别</span>
                   </el-col>
 
-                <el-col :span="3">
+                <el-col :span="4">
                     <el-select v-model="form.sex" placeholder="性别">
                         <el-option label="男" value="男" />
                         <el-option label="女" value="女" />
