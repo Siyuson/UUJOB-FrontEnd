@@ -36,11 +36,11 @@ const routes = [
         //   component: () => import('@/components/myspace/UserInfo.vue')
         // },
 
-        // {
-        //     path: '/myspace/historyPostList',
-        //     name: 'history',
-        //     component: () => import('@//components/myspace/HistoryPostList.vue')
-        //   },
+        {
+            path: '/myspace/historyPostList',
+            name: 'history',
+            component: () => import('@//components/myspace/HistoryPostList.vue')
+          },
 
           {
             path: '/myspace/myProfile',
