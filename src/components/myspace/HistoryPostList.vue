@@ -11,8 +11,9 @@
               <template #header>
                 <div class="card-header">
                   <span style="font-size:larger">{{recruitObj.title}}</span>
-                
+                  <el-button  type="danger" :icon="Delete" @click="deleteTable(recruitObj.id)" >撤销</el-button>
                 </div>
+                
               </template>
               <div class="salary">
                 {{recruitObj.salary}}
@@ -64,16 +65,17 @@
   
 
 <script>
-import {Document} from '@element-plus/icons-vue';
+import {Delete,Document} from '@element-plus/icons-vue';
 import axios from "axios";
 import {useStore } from "vuex";
+import { ElMessage, ElMessageBox } from 'element-plus';
 
 export default{
 
   data(){
     return {
       userId: useStore().state.userId,
-      Document,
+      Document,Delete,
       select_id:"",
       rightAsideVisible: false,
       recruitObjs :[
@@ -181,6 +183,49 @@ export default{
       }
       })
 
+    },
+
+    async deleteTable(id){
+      let that =this;
+
+      ElMessageBox.confirm(
+        '你确定要撤销该招聘信息吗?',
+        'Warning',
+        {
+          confirmButtonText: '确认',
+          cancelButtonText: '取消',
+          type: 'warning',
+        }
+      ).then(() => {
+          ElMessage({
+            type: 'success',
+            message: '撤销成功',
+          });
+
+          alert("删表啦");
+          //删除数据库中对应的招聘表
+          axios({
+            method: "get",
+            url: "http://localhost:9090/",
+            params:{
+
+            }
+          }).then(function (response) {
+            if(response.data.code == "200"){
+            
+            }else{
+              alert("error");
+            }
+            });
+
+            that.init();
+              
+        }).catch(() => {
+          ElMessage({
+            type: 'info',
+            message: '已取消',
+          })
+        })
     }
   },
   mounted(){
