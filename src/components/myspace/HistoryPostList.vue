@@ -135,7 +135,6 @@ export default{
         }
       }).then(function (response) {
         if(response.data.code == "200"){
-          alert(response.data.data.name);
           that.profileList=[];
           response.data.data.forEach(element => {
             that.profileList.push(
@@ -187,6 +186,7 @@ export default{
 
     async deleteTable(id){
       let that =this;
+      //that.select_id=id;
 
       ElMessageBox.confirm(
         '你确定要撤销该招聘信息吗?',
@@ -202,22 +202,20 @@ export default{
             message: '撤销成功',
           });
 
-          alert("删表啦");
           //删除数据库中对应的招聘表
           axios({
-            method: "get",
-            url: "http://localhost:9090/",
+            method: "post",
+            url: "http://localhost:9090/recruitTable/delete",
             params:{
-
+              tableId:id,
             }
           }).then(function (response) {
             if(response.data.code == "200"){
-            
+              alert("删除成功");
             }else{
               alert("error");
             }
             });
-
             that.init();
               
         }).catch(() => {
