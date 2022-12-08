@@ -127,17 +127,22 @@ export default{
       //获取对应招聘表下的简历
       axios({
         method: "get",
-        url: "http://localhost:9090/",
+        url: "http://localhost:9090/profile/tableProfile",
         params:{
-
+            id:that.select_id,
         }
       }).then(function (response) {
         if(response.data.code == "200"){
+          alert(response.data.data.name);
           that.profileList=[];
           response.data.data.forEach(element => {
             that.profileList.push(
               {
-
+                  name:element.name,
+                  sex:element.sex,
+                  email:element.email,
+                  edu:element.edu,
+                  description:element.description,
               }
             )
           });
@@ -153,9 +158,9 @@ export default{
       //获取对应用户id发布的招聘表
       axios({
         method: "get",
-        url: "http://localhost:9090/",
+        url: "http://localhost:9090/recruitTable/myPost",
         params:{
-
+            id:that.userId,
         }
       }).then(function (response) {
         if(response.data.code == "200"){
@@ -172,7 +177,7 @@ export default{
           )
         });
       }else{
-        alert("error");
+        alert("获取发布信息失败");
       }
       })
 

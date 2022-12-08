@@ -101,6 +101,7 @@ export default{
                     edu:that.form.edu,
                     description:that.form.description,
 
+                    
                 },
             }).then(function (response) {
                 alert(response.data.msg);
