@@ -94,7 +94,7 @@ export default{
             let that=this;
             axios({
                 method: "post",
-                url: "http://localhost:9090/recruitTable/post",
+                url: "http://localhost:9090/job/post",
                 data: {
                     publisher_id:that.form.userId,
                     title:that.form.title,

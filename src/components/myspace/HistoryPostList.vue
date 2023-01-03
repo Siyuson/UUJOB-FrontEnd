@@ -129,7 +129,7 @@ export default{
       //获取对应招聘表下的简历
       axios({
         method: "get",
-        url: "http://localhost:9090/profile/tableProfile",
+        url: "http://localhost:9090/resume/jobResume",
         params:{
             id:that.select_id,
         }
@@ -159,7 +159,7 @@ export default{
       //获取对应用户id发布的招聘表
       axios({
         method: "get",
-        url: "http://localhost:9090/recruitTable/myPost",
+        url: "http://localhost:9090/job/myPost",
         params:{
             id:that.userId,
         }

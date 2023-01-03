@@ -85,7 +85,7 @@ export default{
       let that = this ;
       axios({
         method: "get",
-        url: "http://localhost:9090/recruitTable/allTable",
+        url: "http://localhost:9090/job/allJob",
       }).then(function (response) {
         if(response.data.code == "200"){
         that.recruitObjs=[];

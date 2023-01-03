@@ -167,7 +167,7 @@
             //然后从profile表里面获取部分信息
             axios({
                 method: "get",
-                url: "http://localhost:9090/profile",
+                url: "http://localhost:9090/resume",
                 params: {
                     id: useStore().state.userId
                 }

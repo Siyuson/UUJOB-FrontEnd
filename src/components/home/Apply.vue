@@ -89,9 +89,9 @@ export default{
             //post表单进个人简历,但是哄，简历那边还只是一个对象，需要进行修改，现就这样
             axios({
                 method: "post",
-                url: "http://localhost:9090/profile",
+                url: "http://localhost:9090/resume",
                 params:{
-                    recruitTable_id: that.tableId,
+                    job_id: that.tableId,
                 },
                 data:{
                     seeker_id:that.form.userId,
