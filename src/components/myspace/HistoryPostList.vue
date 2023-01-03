@@ -48,7 +48,6 @@
                 >
                   <el-descriptions-item label="name">{{profile.name}}</el-descriptions-item>
                   <el-descriptions-item label="sex">{{profile.sex}}</el-descriptions-item>
-                  <el-descriptions-item label="phone">{{profile.phone}}</el-descriptions-item>
                   <el-descriptions-item label="email">{{profile.email}}</el-descriptions-item>
                   <el-descriptions-item label="edu">{{profile.edu}}</el-descriptions-item>
                   <el-descriptions-item label="description">{{profile.description}}</el-descriptions-item>

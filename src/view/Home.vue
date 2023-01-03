@@ -7,7 +7,11 @@
                   </div>
 
                   <div class="function">
+                    <el-affix :offset="0">
                       <FunctionArea></FunctionArea>
+                      <!-- <el-button type="primary">Offset top 120px</el-button> -->
+                    </el-affix>
+                    
                   </div>
 
                   
@@ -35,8 +39,8 @@ export default{
     background-color: rgb(245, 245, 245);
     width: 100%;
     height: 100%;
-    position: absolute;
     left: 0;
+    min-height: 800px;
 }
 .main{
   width: 100%;
@@ -52,7 +56,7 @@ export default{
 .function{
   float: right;
   position: relative;
-  right: 10%;
+  right: 8%;
 }
 
 

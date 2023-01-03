@@ -15,31 +15,19 @@
         <div class="panels-container">
             <div class="panel left-panel">
                 <div class="content">
-                    <h3>学习学习</h3>
-                    <p>开摆开摆</p>
                     <button @click="modifyState('register');signUpMode = !signUpMode" class="btn transparent">注册</button>
                 </div>
-                <img src="@/assets/img/log.svg" class="image" alt="" />
+                <!-- <img src="@/assets/img/log.svg" class="image" alt="" /> -->
             </div>
 
             <div class="panel right-panel">
                 <div class="content">
-                    <h3>不能学习</h3>
-                    <p>不能开摆</p>
                     <button @click="modifyState('login');signUpMode = !signUpMode" class="btn transparent">登录</button>
                 </div>
-                <img src="@/assets/img/register.svg" class="image" alt="" />
+                <!-- <img src="@/assets/img/register.svg" class="image" alt="" /> -->
             </div>
         </div>
     </div>
-    <!-- <div class="login">
-      <LoginForm :loginUser="loginUser" :rules="rules" /> 
-    </div> -->
-    
-    <!-- <div class="register">
-      <RegisterForm :registerUser="registerUser" :registerRules="registerRules"/>
-    </div>
-     -->
 </template>
 
 <script>
@@ -181,7 +169,7 @@ export default{
 }
 
 .social-icon:hover {
-  color: #4481eb;
+  color: #101318;
   border-color: #4481eb;
 }
 
